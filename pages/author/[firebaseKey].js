@@ -9,12 +9,9 @@ export default function ViewAuthor() {
   const router = useRouter();
   const [authorDetails, setAuthorDetails] = useState({});
   const { firebaseKey } = router.query;
-  console.warn(router);
-  console.warn(authorDetails);
 
   const sexyAuthorDetails = () => {
     viewAuthorDetails(firebaseKey).then(setAuthorDetails);
-    console.warn(sexyAuthorDetails);
   };
 
   useEffect(() => {
@@ -38,6 +35,8 @@ export default function ViewAuthor() {
       </div>
       <hr />
       <div className="d-flex flex-wrap">
+        {console.warn(typeof authorDetails.book)}
+        {console.warn(authorDetails.book)}
         {authorDetails.books?.map((book) => (
           <BookCard key={book.firebaseKey} bookObj={book} onUpdate={sexyAuthorDetails} />
         ))}

@@ -50,8 +50,7 @@ const updateAuthor = (authorObj) => new Promise((resolve, reject) => {
 // TODO: GET A SINGLE AUTHOR'S BOOKS
 const getAuthorBooks = (authorFirebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/books.json?orderBy="author_id"&equalTo="${authorFirebaseKey}"`)
-    .then((response) => resolve(response.data))
-    .then((data) => resolve(Object.values(data)))
+    .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
 
