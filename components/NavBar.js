@@ -6,13 +6,15 @@ import Link from 'next/link';
 import {
   Navbar, Container, Nav,
 } from 'react-bootstrap';
+import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
+  const { user } = useAuth();
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>📚 Simply Books 📚</Navbar.Brand>
+          <Navbar.Brand>📚 Welcome To Simply Books, {user.displayName}! 📚</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
@@ -22,7 +24,16 @@ export default function NavBar() {
               <Nav.Link>Books</Nav.Link>
             </Link>
             <Link passHref href="/book/new">
-              <Nav.Link>Create Book</Nav.Link>
+              <Nav.Link>New Book</Nav.Link>
+            </Link>
+            <Link passHref href="/authors">
+              <Nav.Link>Authors</Nav.Link>
+            </Link>
+            <Link passHref href="/author/new">
+              <Nav.Link>New Author</Nav.Link>
+            </Link>
+            <Link passHref href="/profile">
+              <Nav.Link>Profile</Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>
