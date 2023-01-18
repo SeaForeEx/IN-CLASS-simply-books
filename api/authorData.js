@@ -2,7 +2,7 @@ import axios from 'axios';
 import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
-const endpoint = clientCredentials.databaseURL;
+// const endpoint = clientCredentials.databaseURL;
 
 // FIXME:  GET ALL AUTHORS
 const getAuthors = (uid) => new Promise((resolve, reject) => {
@@ -56,15 +56,9 @@ const getAuthorBooks = (authorFirebaseKey) => new Promise((resolve, reject) => {
 });
 
 const favoriteAuthors = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/authors.json?orderBy="uid"&equalTo="${uid}"`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const fave = Object.values(data).filter((item) => item.favorite);
+  axios.get(`${dbUrl}/authors.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      const fave = Object.values(response.data).filter((item) => item.favorite);
       resolve(fave);
     })
     .catch(reject);
