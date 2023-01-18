@@ -6,6 +6,7 @@ import Link from 'next/link';
 import {
   Navbar, Container, Nav,
 } from 'react-bootstrap';
+// import SearchEngine from './SearchEngine';
 import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
