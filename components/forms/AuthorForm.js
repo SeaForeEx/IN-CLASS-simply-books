@@ -24,8 +24,6 @@ function AuthorForm({ obj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    // getAuthors(user.uid).then(setAuthors);
-
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj]);
 
@@ -122,6 +120,7 @@ function AuthorForm({ obj }) {
   );
 }
 
+// Declaring the prop types
 AuthorForm.propTypes = {
   obj: PropTypes.shape({ // object = shape
     first_name: PropTypes.string, // all the ERD key-value pairs
