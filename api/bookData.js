@@ -3,6 +3,7 @@ import { clientCredentials } from '../utils/client';
 // API CALLS FOR BOOKS
 
 const dbUrl = clientCredentials.databaseURL;
+const endpoint = clientCredentials.databaseURL;
 
 const getBooks = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/books.json?orderBy="uid"&equalTo="${uid}"`)
@@ -43,10 +44,26 @@ const updateBook = (bookObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const booksOnSale = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const onSale = Object.values(data).filter((item) => item.sale);
+      resolve(onSale);
+    })
+    .catch(reject);
+});
+
 export {
   getBooks,
   createBook,
   deleteBook,
   getSingleBook,
   updateBook,
+  booksOnSale,
 };

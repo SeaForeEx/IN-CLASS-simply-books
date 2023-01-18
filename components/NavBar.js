@@ -24,11 +24,17 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Books</Nav.Link>
             </Link>
+            <Link passHref href="/book/sale">
+              <Nav.Link>Sale!</Nav.Link>
+            </Link>
             <Link passHref href="/book/new">
               <Nav.Link>New Book</Nav.Link>
             </Link>
             <Link passHref href="/authors">
               <Nav.Link>Authors</Nav.Link>
+            </Link>
+            <Link passHref href="/author/favorite">
+              <Nav.Link>Favorites!</Nav.Link>
             </Link>
             <Link passHref href="/author/new">
               <Nav.Link>New Author</Nav.Link>
