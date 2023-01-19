@@ -21,8 +21,8 @@ export default function ShowAuthors() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <div>
+  return ( // className d-flex flex-wrap puts cards in rows/columns instead of just one column down
+    <div className="d-flex flex-wrap">
       {authors.map((author) => (
         <AuthorCard key={author.firebaseKey} authorObj={author} onUpdate={getAllAuthors} />
       ))}

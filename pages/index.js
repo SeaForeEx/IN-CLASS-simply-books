@@ -21,7 +21,7 @@ function Home() {
     getAllTheBooks();
   }, []);
 
-  return (
+  return ( // className d-flex flex-wrap puts cards in rows/columns instead of just one column down
     <div className="text-center my-4">
       <div className="d-flex flex-wrap">
         {/* TODO: map over books here using BookCard component */}
